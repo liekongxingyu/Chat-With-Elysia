@@ -1,2 +1,7 @@
 复刻自B站一位UP的项目，需要连接GPT-SoVITS-Inference项目的API，并设置TogetherAI的API使用
 text文件夹在根目录，把它装入环境目录
+进入TogetherAI的官网，获取API，选择合适的模型填在config里，添加系统环境变量TOGETHER_API_KEY，
+值为你的API_KEY
+config文件中，请将参考音频的路径改为你自己的
+下载GSVI项目，添加好模型后运行该项目的pure_api.py。最后启动本项目即可。
+运行环境:python3.9

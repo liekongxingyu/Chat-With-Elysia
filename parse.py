@@ -3,10 +3,12 @@ import sys
 import pyaudio
 import datetime
 import json
-from soundMaker import * 
+from soundMaker import *
 from chat import GenerateText
 import logging
 import wave
+
+
 class Parse:
     role_name = ''
     gt = None
@@ -14,6 +16,7 @@ class Parse:
     begin_time = ''
     file_name = ''
     cnt = 0
+
     def __init__(self) -> None:
         with open('./config.json', 'r', encoding='utf-8') as inform:
             config = json.load(inform)
@@ -32,14 +35,17 @@ class Parse:
             result = self.gt.getText(text)
             if result is None:
                 sys.exit()
-            cntt.write(self.role_name + ': ' + result + '--------------------------------------\n')
+            cntt.write(self.role_name + ': ' + result +
+                       '--------------------------------------\n')
         return result
+
     def switchAudio(self, text):
         audio_path = self.store_path + '/' + str(self.cnt) + '.wav'
         self.cnt += 1
         generateSound(text, audio_path)
         logging.warning('text change to audio successfully!')
         return text, audio_path
+
     def makeChat(self):
         while True:
             text = input('请输入内容：')
@@ -57,10 +63,13 @@ class Parse:
                 stream.write(data)
                 data = wf.readframes(chunk)
             stream.stop_stream()
-            stream.close() 
+            stream.close()
             p.terminate()
+
     def PipeChat(self, text):
         return self.switchAudio(self.getText(text))
+
+
 if __name__ == '__main__':
     ps = Parse()
     ps.makeChat()
