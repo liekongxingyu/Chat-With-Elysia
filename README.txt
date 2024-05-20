@@ -1,0 +1,2 @@
+复刻自B站一位UP的项目，需要连接GPT-SoVITS-Inference项目的API，并设置TogetherAI的API使用
+text文件夹在根目录，把它装入环境
