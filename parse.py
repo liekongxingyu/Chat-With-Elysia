@@ -1,12 +1,10 @@
 import os
 import sys
-import pyaudio
 import datetime
 import json
 from soundMaker import *
 from chat import GenerateText
 import logging
-import wave
 
 
 class Parse:
@@ -46,30 +44,8 @@ class Parse:
         logging.warning('text change to audio successfully!')
         return text, audio_path
 
-    def makeChat(self):
-        while True:
-            text = input('请输入内容：')
-            audio_path = self.switchAudio(self.getText(text))
-            input('输入y开始播放音频：')
-            chunk = 1024
-            wf = wave.open(audio_path, 'rb')
-            p = pyaudio.PyAudio()
-            stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                            channels=wf.getnchannels(),
-                            rate=wf.getframerate(),
-                            output=True)
-            data = wf.readframes(chunk)
-            while len(data) > 0:
-                stream.write(data)
-                data = wf.readframes(chunk)
-            stream.stop_stream()
-            stream.close()
-            p.terminate()
-
     def PipeChat(self, text):
         return self.switchAudio(self.getText(text))
 
 
-if __name__ == '__main__':
-    ps = Parse()
-    ps.makeChat()
+

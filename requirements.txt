@@ -1,5 +1,4 @@
 gradio==4.31.4
-PyAudio==0.2.14
 Requests==2.31.0
 together==1.1.5
 torch==2.3.0
