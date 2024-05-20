@@ -10,6 +10,7 @@ if __name__ == '__main__':
             "# <center> Chat with Elysia\n"
             "### <center> base on chat TogetherAI and GSVI\n"
         )
+        
         with gr.Row():
             with gr.Column():
                 textbox = gr.TextArea(label="对话内容",
