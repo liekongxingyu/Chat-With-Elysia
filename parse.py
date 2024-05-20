@@ -1,6 +1,5 @@
 import os
 import sys
-
 import pyaudio
 import datetime
 import json
